@@ -1,0 +1,90 @@
+<!--pages/subPages/voucher/voucher.wxml-->
+<wxs module="format">
+  function formatTime(timeStr) {
+    if (!timeStr) return ''
+    return timeStr.replace('T', ' ')
+  }
+  function getTimeStamp(timeStr) {
+    var date = getDate(timeStr);
+    return date.getTime();
+  }
+  module.exports = {
+    formatTime: formatTime,
+    getTimeStamp: getTimeStamp
+  }
+</wxs>
+<view class="container">
+  <!-- 选项卡 -->
+  <view class="tabs">
+    <view class="tab {{activeTab === '0' ? 'active' : ''}}" bindtap="switchTab" data-index="0">可领取</view>
+    <view class="tab {{activeTab === '1' ? 'active' : ''}}" bindtap="switchTab" data-index="1">我的优惠券</view>
+  </view>
+
+  <!-- 可领取优惠券 -->
+  <view class="tab-content" wx:if="{{activeTab === '0'}}">
+    <view class="voucher-list">
+      <view class="voucher-card available" wx:for="{{availableVouchers}}" wx:key="id">
+        <view class="voucher-left">
+          <view class="voucher-value">
+            <text class="currency" wx:if="{{item.type === 2}}">¥<text class="number">{{item.value}}</text></text>
+            <text class="unit" wx:if="{{item.type === 1}}"><text class="number">{{item.value*10}}</text>折</text>
+          </view>
+          <view class="voucher-condition" wx:if="{{item.type === 2}}">满{{item.minAmount}}元可用</view>
+          <view class="voucher-condition" wx:if="{{item.type === 1}}">无门槛使用</view>
+        </view>
+        <view class="voucher-right">
+          <view class="voucher-title">{{item.title}}</view>
+          <view class="voucher-time">有效期: {{format.formatTime(item.beginTime)}} 至 {{format.formatTime(item.endTime)}}</view>
+          <view class="voucher-action">
+            <button class="receive-btn" wx:if="{{format.getTimeStamp(item.beginTime) <= now}}" bindtap="receiveVoucher" data-id="{{item.id}}">立即领取</button>
+            <button class="diabled-btn" wx:else>未到时间</button>
+          </view>
+        </view>
+      </view>
+
+      <view class="empty" wx:if="{{availableVouchers.length === 0}}">
+        <view class="empty-text">暂无可用优惠券</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的优惠券 -->
+  <view class="tab-content" wx:if="{{activeTab === '1'}}">
+    <view class="filter-tabs">
+      <view class="filter-tab {{filterIndex === '0' ? 'active' : ''}}" bindtap="switchFilter" data-index="0">未使用</view>
+      <view class="filter-tab {{filterIndex === '1' ? 'active' : ''}}" bindtap="switchFilter" data-index="1">已使用</view>
+      <view class="filter-tab {{filterIndex === '2' ? 'active' : ''}}" bindtap="switchFilter" data-index="2">已过期</view>
+    </view>
+
+    <view class="voucher-list">
+      <view class="voucher-card {{item.state === '1' ? 'used' : ''}} {{item.state === '2' ? 'expired' : ''}}" wx:for="{{filteredUserVouchers}}" wx:key="id">
+        <view class="voucher-left">
+          <view class="voucher-value">
+            <text class="currency" wx:if="{{item.type === 2}}">¥<text class="number">{{item.value}}</text></text>
+            <text class="unit" wx:if="{{item.type === 1}}"><text class="number">{{item.value*10}}</text>折</text>
+          </view>
+          <view class="voucher-condition" wx:if="{{item.type === 2}}">满{{item.minAmount}}元可用</view>
+          <view class="voucher-condition" wx:if="{{item.type === 1}}">无门槛使用</view>
+        </view>
+        <view class="voucher-right">
+          <view class="voucher-title">{{item.title}}</view>
+          <view class="voucher-time">有效期: {{format.formatTime(item.beginTime)}} 至 {{format.formatTime(item.endTime)}}</view>
+          <view class="voucher-status">
+            <text wx:if="{{item.state === '0'}}">未使用</text>
+            <text wx:if="{{item.state === '1'}}">已使用</text>
+            <text wx:if="{{item.state === '2'}}">已过期</text>
+          </view>
+          <view class="voucher-get-time">领取时间: {{format.formatTime(item.getTime)}}</view>
+        </view>
+
+        <!-- 状态角标 -->
+        <view class="status-mark" wx:if="{{item.state === '1'}}">已使用</view>
+        <view class="status-mark" wx:if="{{item.state === '2'}}">已过期</view>
+      </view>
+
+      <view class="empty" wx:if="{{filteredUserVouchers.length === 0}}">
+        <view class="empty-text">暂无优惠券</view>
+      </view>
+    </view>
+  </view>
+</view>

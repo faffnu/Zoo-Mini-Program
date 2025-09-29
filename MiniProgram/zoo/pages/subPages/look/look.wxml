@@ -1,0 +1,11 @@
+<!--pages/subPages/look/look.wxml-->
+<view class="goods-container">
+  <view class="weui-grids">
+    <block wx:for="{{animalList}}" wx:key="index">
+      <navigator url="/pages/subPages/animal/detail/detail?id={{item.animalId}}" class="weui-grid goods">
+        <image class="weui-grid__icon goods" src="{{item.picUrl}}" />
+        <view class="weui-grid__label goods">{{item.animal}}</view>
+      </navigator>
+    </block>
+  </view>
+</view>

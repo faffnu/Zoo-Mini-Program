@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.OrderMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Order">
+        select `order`.*, `user`.`phone` as phone, `ticket`.`name` as ticket from `order`
+		left join `user` on `order`.`user_id` = `user`.id
+		left join `ticket` on `order`.`ticket_id` = `ticket`.id
+
+        <where>
+			<if test="phone != null and phone != ''">
+				and `user`.`phone` like concat ('%', #{phone}, '%')
+			</if>
+			<if test="state != null and state != ''">
+				and `order`.`state` like concat ('%', #{state}, '%')
+			</if>
+            <if test="userId != null and userId != ''">
+                and `order`.`user_id` = #{userId}
+            </if>
+        </where>
+        order by `order`.`create_time` desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Order">
+        select `order`.* , `user`.`phone` as phone, `ticket`.`name` as ticket from `order`
+              left join `user` on `order`.`user_id` = `user`.id
+              left join `ticket` on `order`.`ticket_id` = `ticket`.id
+                where `order`.id = #{id}
+    </select>
+
+    <select id="selectByOrderNumber" resultType="com.example.entity.Order">
+        select `order`.*, `user`.`phone` as phone, `ticket`.`name` as ticket from `order`
+           left join `user` on `order`.`user_id` = `user`.id
+           left join `ticket` on `order`.`ticket_id` = `ticket`.id
+            where order_number = #{orderNumber}
+    </select>
+
+
+    <delete id="deleteById">
+        delete from `order` where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.Order">
+        INSERT INTO `order` (order_number, number, total_price, create_time, use_date, state, user_id, ticket_id,voucher_id,discount_amount)
+        VALUES (#{orderNumber}, #{number}, #{totalPrice}, #{createTime}, #{useDate}, #{state}, #{userId}, #{ticketId},#{voucherId},#{discountAmount})
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.Order">
+        UPDATE `order`
+        SET order_number = #{orderNumber},
+            number = #{number},
+            total_price = #{totalPrice},
+            create_time = #{createTime},
+            use_date = #{useDate},
+            state = #{state},
+            user_id = #{userId},
+            ticket_id = #{ticketId}
+        WHERE id = #{id}
+    </update>
+
+</mapper>

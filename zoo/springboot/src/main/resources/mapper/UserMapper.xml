@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+
+    <select id="selectAll" resultType="com.example.entity.User">
+        select `user`.* from `user`
+
+        <where>
+			<if test="name != null and name != ''">
+				and `user`.`name` like concat ('%', #{name}, '%')
+			</if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="selectByOpenid" resultType="com.example.entity.User">
+        select * from user where openid = #{openid}
+    </select>
+
+    <update id="isBanById" parameterType="int">
+        update user
+            <set>
+                is_banned = CASE
+                WHEN is_banned = '是' THEN '否'
+                ELSE '是'
+                END
+            </set>
+              where  id = #{id}
+    </update>
+
+    <update id="unBanById" parameterType="int">
+        update user
+        <set>
+            is_banned = '否'
+        </set>
+        where  id = #{id}
+    </update>
+
+    <update id="banById" parameterType="int">
+        update user
+        <set>
+            is_banned = '是'
+        </set>
+        where  id = #{id}
+    </update>
+
+
+</mapper>

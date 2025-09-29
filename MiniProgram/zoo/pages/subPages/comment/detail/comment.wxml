@@ -1,0 +1,56 @@
+<!--pages/subPages/comment/detail/comment.wxml-->
+<view class="container">
+  <!-- 平均评分 -->
+  <view class="average-rating">
+    <block wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="index" wx:for-item="star">
+      <image class="star" src="{{averageRating >= index+1? '/images/star.png' : '/images/none-star.png'}}"></image>
+    </block>
+    <text class="rating">{{averageRating}} </text>
+  </view>
+
+  <!-- 排序选项 -->
+  <view class="sort-options">
+    <!-- 滑块 -->
+    <view class="slider" style="transform: translateX({{sliderPosition}}px);"></view>
+
+    <!-- 排序选项 -->
+    <view class="sort-item {{currentSort === 'default' ? 'active' : ''}}" bindtap="changeSort" data-sort="default">
+      默认排序
+    </view>
+    <view class="sort-item {{currentSort === 'latest' ? 'active' : ''}}" bindtap="changeSort" data-sort="latest">
+      最新评论
+    </view>
+  </view>
+
+  <!-- 评价列表 -->
+  <view class="reviews-list">
+    <block wx:for="{{comments}}" wx:key="id">
+      <view class="comment-item">
+        <view class="comment-info">
+          <image class="avatar" src="{{item.avatar}}"></image>
+          <view class="info">
+            <view class="nick">
+              <text class="nickname">{{item.user}}</text>
+              <block wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="index" wx:for-item="star">
+                <image class="star" src="{{item.score >= index+1? '/images/star.png' : '/images/none-star.png'}}"></image>
+              </block>
+            </view>
+            <text class="time">{{item.time}}</text>
+          </view>
+        </view>
+        <text class="content">{{item.content}}</text>
+        <block wx:if="{{item.img}}">
+          <image class="comment-img" src="{{item.img}}" mode="widthFix"></image>
+        </block>
+        <block wx:if="{{item.video}}">
+          <video class="comment-video" src="{{item.video}}" controls></video>
+        </block>
+        <view class="approve-count">
+          <image class="approve" src='/images/approve.png' wx:if="{{item.isApprove}}" bind:tap="toggleApprove" data-id="{{item.id}}"></image>
+          <image class="approve" src='/images/none-approve.png' wx:else="{{item.isApprove}}" bind:tap="toggleApprove" data-id="{{item.id}}"></image>
+          <text>{{item.approve}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

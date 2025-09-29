@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserVoucherMapper">
+
+    <select id="selectAll" resultType="com.example.entity.UserVoucher">
+        select `user_voucher`.*, voucher.title, voucher.type, voucher.value, voucher.min_amount, voucher.begin_time, voucher.end_time from `user_voucher`
+        left join `voucher` on `user_voucher`.`voucher_id` = `voucher`.id
+        <where>
+            <if test="state != null and state != ''">
+                and `user_voucher`.`state` = #{state}
+            </if>
+            <if test="userId != null and userId != ''">
+                and `user_voucher`.`user_id` = #{userId}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.UserVoucher">
+        select `user_voucher`.*, voucher.title, voucher.type, voucher.value, voucher.min_amount, voucher.begin_time, voucher.end_time from `user_voucher`
+            left join `voucher` on `user_voucher`.`voucher_id` = `voucher`.id
+                 where `user_voucher`.id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from `user_voucher` where  id = #{id}
+    </delete>
+
+    <select id="selectUsableVouchers" resultType="com.example.entity.UserVoucher">
+        select `user_voucher`.*, voucher.title, voucher.type, voucher.value, voucher.min_amount, voucher.begin_time, voucher.end_time from `user_voucher`
+        left join `voucher` on `user_voucher`.`voucher_id` = `voucher`.id
+        <where>
+            <!-- 状态为0（未使用） -->
+            AND `user_voucher`.`state` = 0
+
+            <!-- 用户ID筛选 -->
+            AND `user_voucher`.`user_id` = #{userId}
+
+            <!-- 时间有效性筛选：当前时间在beginTime和endTime之间 -->
+            AND `voucher`.`begin_time` &lt;= NOW()
+            AND `voucher`.`end_time` &gt;= NOW()
+            <!-- 额外的安全校验：确保优惠券记录有效 -->
+            AND `voucher`.`id` IS NOT NULL
+        </where>
+        ORDER BY `voucher`.`min_amount` DESC, `voucher`.`value` DESC
+    </select>
+
+    <select id="selectAllUserVouchers" resultType="com.example.entity.UserVoucher">
+        select `user_voucher`.*, voucher.title, voucher.type, voucher.value, voucher.min_amount, voucher.begin_time, voucher.end_time from `user_voucher`
+        left join `voucher` on `user_voucher`.`voucher_id` = `voucher`.id
+        <where>
+            `user_voucher`.`user_id` = #{userId}
+        </where>
+    </select>
+
+    <select id="selectExpiredVouchers" resultType="com.example.entity.UserVoucher">
+        SELECT `user_voucher`.*, voucher.title, voucher.type, voucher.value, voucher.min_amount, voucher.begin_time, voucher.end_time from `user_voucher`
+                left join `voucher` on `user_voucher`.`voucher_id` = `voucher`.id
+        WHERE user_voucher.state = 0  -- 未使用
+          AND voucher.end_time &lt;= #{now}  -- 已过期
+          AND user_voucher.state != 2   -- 不是已过期状态
+    </select>
+
+    <update id="batchUpdateExpiredState">
+        UPDATE user_voucher SET state = 2 -- 已过期
+        WHERE id IN
+        <foreach collection="expiredIds" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        AND state = 0  -- 确保只更新未使用的
+    </update>
+</mapper>

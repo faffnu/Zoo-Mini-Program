@@ -1,0 +1,39 @@
+<view class="container">
+  <view class="search">
+    <mp-searchbar value="{{inputVal}}" bindinput="bindInput" bindcancel="clearInput" bindselectresult="selectResult" search="{{search}}" placeholder="搜索动物"></mp-searchbar>
+  </view>
+
+  <scroll-view scroll-x="true" class="scroll-view">
+    <block wx:for="{{categories}}" wx:key="id">
+      <view class="category-item {{type === item.name ? 'active' : ''}}" bindtap="onCategoryTap" data-type="{{item.name}}">
+        {{item.name}}
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="goods-container">
+    <view class="weui-grids">
+      <block wx:for="{{animalList}}" wx:key="index">
+        <navigator url="/pages/subPages/animal/detail/detail?id={{item.id}}" class="weui-grid goods">
+          <image class="weui-grid__icon goods" src="{{item.picUrl}}" />
+          <view class="weui-grid__label goods">{{item.name}}</view>
+          <!-- 显示距离 -->
+          <view wx:if="{{hasLocation}}" class="distance-tag">
+            {{item.distance}}
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+
+  <!-- 定位按钮放在重置图标上面 -->
+  <view class="location-btn-container">
+    <view class="location-btn" bindtap="getLocation">
+      <image class="location-icon" src="/images/location.png"></image>
+    </view>
+    <view class="location-btn" bindtap="clearInput">
+      <image class="location-icon" src="/images/reset.png"></image>
+    </view>
+
+  </view>
+</view>

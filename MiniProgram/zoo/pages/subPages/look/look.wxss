@@ -1,0 +1,23 @@
+/* pages/subPages/look/look.wxss */
+.goods-container {
+  padding: 5rpx;
+
+}
+
+.weui-grid.goods {
+  width: 360rpx;
+  background: #FFFFFF;
+  margin: 7rpx;
+  margin-bottom: 10rpx;
+  padding: 0rpx;
+}
+
+.weui-grid__icon.goods {
+  width: 360rpx;
+  height: 360rpx;
+}
+
+.weui-grid__label.goods {
+  text-align: left;
+  padding-left: 5rpx;
+}

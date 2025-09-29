@@ -1,0 +1,22 @@
+<!-- map.wxml -->
+<map id="navi_map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" markers="{{markers}}" polyline="{{polyline}}" include-points="{{markers}}" class="navi_map" show-location enable-overlooking="true" enable-3D="true" enable-traffic="true">
+
+  <!-- 底部信息卡片 -->
+  <cover-view class="info-card">
+    <cover-view class="info-item">
+      <cover-image src="/images/distance.png" class="info-icon" />
+      <cover-view class="info-text">{{formattedDistance}}</cover-view>
+    </cover-view>
+    <cover-view class="info-item">
+      <cover-image src="/images/time.png" class="info-icon" />
+      <cover-view class="info-text">{{duration}}分钟</cover-view>
+    </cover-view>
+  </cover-view>
+
+  <!-- 定位按钮 -->
+  <cover-view class="controls">
+    <cover-button class="locate-btn" bindtap="centerLocation">
+      <cover-image src="/images/location.png" class="locate-icon" />
+    </cover-button>
+  </cover-view>
+</map>

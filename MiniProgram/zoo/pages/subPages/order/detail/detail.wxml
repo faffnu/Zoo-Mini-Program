@@ -1,0 +1,49 @@
+<!--pages/subPages/order/detail/detail.wxml-->
+<view class="container">
+  <!-- 订单信息卡片 -->
+  <view class="card">
+    <view class="info-item">
+      <text class="label">订单状态：</text>
+      <text class="value state-{{order.state === '待使用' ? 'active' : 'inactive'}}">{{order.state}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">订单编号：</text>
+      <text class="value">{{order.orderNumber}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">门票名称：</text>
+      <text class="value">{{order.ticket}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">购买数量：</text>
+      <text class="value">{{order.number}}张</text>
+    </view>
+    <view class="info-item">
+      <text class="label">订单总额：</text>
+      <text class="value price">¥{{order.totalPrice}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">电话号码：</text>
+      <text class="value">{{order.phone}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">下单时间：</text>
+      <text class="value">{{order.createTime}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">使用日期：</text>
+      <text class="value">{{order.useDate}}</text>
+    </view>
+  </view>
+
+  <!-- 二维码区域 -->
+  <view class="qrcode-card" wx:if="{{order.state === '待使用'}}">
+    <text class="qrcode-title">核销二维码</text>
+    <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+    <text class="qrcode-tip">请向工作人员出示此二维码</text>
+    <button bind:tap="check" class="qrcode-check">核销</button>
+  </view>
+
+
+
+</view>

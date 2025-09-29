@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.VoucherMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Voucher">
+        select `voucher`.* from `voucher`
+        <where>
+            <if test="title != null and title != ''">
+                and `voucher`.`title` like concat ('%', #{title}, '%')
+            </if>
+            <if test="type != null and type != ''">
+                and `voucher`.`type` = #{type}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Voucher">
+        select * from voucher where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from voucher where  id = #{id}
+    </delete>
+
+    <select id="selectAvailable" resultType="com.example.entity.Voucher">
+        SELECT `voucher`.* FROM `voucher`
+        WHERE
+        `voucher`.`end_time` &gt;= NOW()
+        <!-- 库存充足 -->
+        AND `voucher`.`stock` &gt; 0
+        ORDER BY `voucher`.`begin_time`
+    </select>
+
+    <update id="updateStock">
+        update voucher
+        SET stock = stock - 1, update_time = NOW()
+        where  id = #{id} AND stock &gt; 0
+    </update>
+
+
+</mapper>

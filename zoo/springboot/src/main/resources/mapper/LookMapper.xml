@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.LookMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Look">
+        select `look`.*, `user`.name as user, `animal`.`name` as animal from `look`
+		left join `user` on `look`.`user_id` = `user`.id
+		left join `animal` on `look`.`animal_id` = `animal`.id
+
+        <where>
+			<if test="user != null and user != ''">
+				and `user`.name like concat ('%', #{user}, '%')
+			</if>
+			<if test="animal != null and animal != ''">
+				and `animal`.`name` like concat ('%', #{animal}, '%')
+			</if>
+            <if test="animalId != null and animalId != ''">
+                and `animal`.`id` = #{animalId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and `user`.`id` = #{userId}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectByUserId" resultType="com.example.entity.Look">
+        select `look`.*, `animal`.`id` as animalId,
+               `animal`.`pic_url` as picUrl,`animal`.`name` as animal from `look`
+            left join `animal` on `look`.`animal_id` = `animal`.id
+        where `look`.`user_id` = #{userId}
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Look">
+        select * from look where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from look where  id = #{id}
+    </delete>
+
+</mapper>

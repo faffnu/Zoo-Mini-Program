@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "动物列表",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+  }
+}

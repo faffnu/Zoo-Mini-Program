@@ -1,0 +1,28 @@
+<view class='container'>
+  <view class="userinfo">
+    <image src='{{ memberInfo.avatar }}' class='userinfo-avatar'>
+    </image>
+    <view class="userinfo-nickname">{{ memberInfo.name }}</view>
+  </view>
+
+  <view class='basic'>
+    <view class='weui-flex item'>
+      <view class="label title">基本信息</view>
+      <view class='value edit' bindtap='edit'>编辑</view>
+    </view>
+
+    <view class='weui-flex item'>
+      <view class='label'>性别</view>
+      <view class='value'>{{memberInfo.gender}}</view>
+    </view>
+    <view class='weui-flex item'>
+      <view class='label'>联系电话</view>
+      <view class='value'>{{memberInfo.phone == null ? '待填写' : memberInfo.phone}}</view>
+    </view>
+    <view class='weui-flex item'>
+      <view class='label'>身份证</view>
+      <view class='value'>{{memberInfo.idCard == null ? '待填写' : memberInfo.idCard}}</view>
+    </view>
+  </view>
+  <button bind:tap="logout">退出登录</button>
+</view>

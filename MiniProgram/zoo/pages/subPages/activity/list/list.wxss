@@ -1,0 +1,41 @@
+/* pages/subPages/activity/list/list.wxss */
+.container {
+  padding-top: 1%;
+}
+
+.activity-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.activity-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.activity-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.activity-introduce {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.activity-time {
+  font-size: 12px;
+  color: #999;
+}

@@ -1,0 +1,55 @@
+server:
+  port: 9090
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+# 数据库配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/zoo?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      #password: 123456
+      database: 1
+      lettuce:
+        pool:
+          max-active: 30
+          max-idle: 15
+          min-idle: 5
+          time-between-eviction-runs: 10s
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: zoo
+    password: 123456
+    virtual-host: zoo
+    listener:
+      simple:
+        acknowledge-mode: manual #开启手动应答
+  jackson:
+    default-property-inclusion: non_null # JSON处理时忽略非空字段
+
+
+# 配置mybatis实体和xml映射
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+
+#fileBaseUrl: http://192.168.217.100:${server.port}
+
+wechat:
+  appid: wx0c4a445f22e6ca57
+  secret: 7308951f5bc523c03a302306af075fc3

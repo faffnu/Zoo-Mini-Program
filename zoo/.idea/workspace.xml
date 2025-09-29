@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0e172aa0-c116-4f28-a5cd-8ee42ebc3192" name="更改" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Vue Options API Component" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2snmAcauCb4oWpVUVtXu7zZxpvJ" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.animalGeoTest.loadAnimals.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.animalGeoTest.testCheckExpiredVouchers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.cacheTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.cacheTest.testCacheAllAnimals.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.cacheTest.testCacheAllComments.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.cacheTest.testCacheAllUserVouchers.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.cacheTest.testCacheAllVouchers.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SpringbootApplication.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/code/demo/Zoo/MiniProgram/zoo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Facet&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.13378906&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d164d99c46d45be6b1e7585ff7ea10e7&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\JetBrains\\IntelliJ IDEA 2024.2.6\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;redis&quot;
+    ],
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Options API Component&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\zoo\springboot\src\main\java\com\example\common\config" />
+      <recent name="D:\code\zoo\springboot\src\main\java\com\example" />
+      <recent name="D:\code\zoo\springboot\src\main\resources" />
+      <recent name="D:\code\zoo\vue\src\components" />
+      <recent name="D:\code\zoo\vue\src\assets\imgs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\code\zoo\vue\src\components\home" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.common.config" />
+      <recent name="com.example.common" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringbootApplication">
+    <configuration name="animalGeoTest.loadAnimals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.animalGeoTest" />
+      <option name="METHOD_NAME" value="loadAnimals" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cacheTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cacheTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cacheTest.testCacheAllComments" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cacheTest" />
+      <option name="METHOD_NAME" value="testCacheAllComments" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cacheTest.testCacheAllUserVouchers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cacheTest" />
+      <option name="METHOD_NAME" value="testCacheAllUserVouchers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="cacheTest.testCacheAllVouchers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springboot" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cacheTest" />
+      <option name="METHOD_NAME" value="testCacheAllVouchers" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springboot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.SpringbootApplication" />
+      <option name="VM_PARAMETERS" value="-Xshare:off -XX:+EnableDynamicAgentLoading" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/vue/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.cacheTest.testCacheAllComments" />
+      <item itemvalue="JUnit.cacheTest.testCacheAllUserVouchers" />
+      <item itemvalue="JUnit.cacheTest.testCacheAllVouchers" />
+      <item itemvalue="JUnit.animalGeoTest.loadAnimals" />
+      <item itemvalue="JUnit.cacheTest" />
+      <item itemvalue="npm.dev" />
+      <item itemvalue="Spring Boot.SpringbootApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.cacheTest.testCacheAllComments" />
+        <item itemvalue="JUnit.cacheTest" />
+        <item itemvalue="JUnit.animalGeoTest.loadAnimals" />
+        <item itemvalue="JUnit.cacheTest.testCacheAllUserVouchers" />
+        <item itemvalue="JUnit.cacheTest.testCacheAllVouchers" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="0e172aa0-c116-4f28-a5cd-8ee42ebc3192" name="更改" comment="" />
+      <created>1739099578692</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1739099578692</updated>
+      <workItem from="1739099580027" duration="20659000" />
+      <workItem from="1739499218981" duration="29037000" />
+      <workItem from="1739800300546" duration="48771000" />
+      <workItem from="1740648104143" duration="58014000" />
+      <workItem from="1742715860126" duration="111000" />
+      <workItem from="1742716800586" duration="237000" />
+      <workItem from="1742717264373" duration="54000" />
+      <workItem from="1742717343026" duration="41000" />
+      <workItem from="1742717435636" duration="40925000" />
+      <workItem from="1743498919695" duration="60905000" />
+      <workItem from="1744097869716" duration="17768000" />
+      <workItem from="1744356495424" duration="15501000" />
+      <workItem from="1745410439246" duration="913000" />
+      <workItem from="1745411378127" duration="22190000" />
+      <workItem from="1745563915119" duration="30182000" />
+      <workItem from="1745651264472" duration="14001000" />
+      <workItem from="1747556683006" duration="1530000" />
+      <workItem from="1747639153736" duration="17236000" />
+      <workItem from="1749014150281" duration="101000" />
+      <workItem from="1749047219411" duration="261000" />
+      <workItem from="1753333842334" duration="865000" />
+      <workItem from="1753872208769" duration="812000" />
+      <workItem from="1754042718519" duration="237000" />
+      <workItem from="1754044574921" duration="111000" />
+      <workItem from="1754044792588" duration="81000" />
+      <workItem from="1754559741712" duration="598000" />
+      <workItem from="1754797178878" duration="184000" />
+      <workItem from="1754819711326" duration="10475000" />
+      <workItem from="1754832203000" duration="10152000" />
+      <workItem from="1754980690516" duration="9786000" />
+      <workItem from="1755081497758" duration="4274000" />
+      <workItem from="1755098637999" duration="8510000" />
+      <workItem from="1755147717915" duration="4388000" />
+      <workItem from="1755159995280" duration="256000" />
+      <workItem from="1755160359353" duration="24000" />
+      <workItem from="1755160406484" duration="72000" />
+      <workItem from="1755164073949" duration="1341000" />
+      <workItem from="1755166095042" duration="246000" />
+      <workItem from="1755166370125" duration="772000" />
+      <workItem from="1755167155231" duration="87236000" />
+      <workItem from="1756007354462" duration="379000" />
+      <workItem from="1756009820201" duration="698000" />
+      <workItem from="1756010550670" duration="315000" />
+      <workItem from="1756011011074" duration="152000" />
+      <workItem from="1756011374614" duration="998000" />
+      <workItem from="1756018419220" duration="487000" />
+      <workItem from="1756019033649" duration="4717000" />
+      <workItem from="1756106524689" duration="1253000" />
+      <workItem from="1756116598826" duration="1959000" />
+      <workItem from="1756184899641" duration="14967000" />
+      <workItem from="1756269974236" duration="1925000" />
+      <workItem from="1756275385834" duration="10091000" />
+      <workItem from="1756302332707" duration="4218000" />
+      <workItem from="1756353842667" duration="2769000" />
+      <workItem from="1756363299149" duration="7643000" />
+      <workItem from="1756376033863" duration="24674000" />
+      <workItem from="1756530459060" duration="9113000" />
+      <workItem from="1756547526183" duration="9624000" />
+      <workItem from="1756610299492" duration="21259000" />
+      <workItem from="1756709131311" duration="1356000" />
+      <workItem from="1756715888041" duration="13236000" />
+      <workItem from="1756985570436" duration="3372000" />
+      <workItem from="1757342115147" duration="1512000" />
+      <workItem from="1758615475057" duration="1749000" />
+      <workItem from="1758625541248" duration="132000" />
+      <workItem from="1758626533174" duration="15923000" />
+      <workItem from="1758716211543" duration="3769000" />
+      <workItem from="1758722694499" duration="11325000" />
+      <workItem from="1758883727737" duration="2734000" />
+      <workItem from="1759024409171" duration="5001000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

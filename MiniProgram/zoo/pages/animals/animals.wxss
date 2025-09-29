@@ -1,0 +1,100 @@
+/* pages/animals/animals.wxss */
+.container {
+  position: relative;
+  /* 确保容器是相对定位，以便固定定位的子元素能够相对于它定位 */
+  height: 100vh;
+  /* 容器高度设置为视口高度 */
+}
+
+.reset-icon {
+  position: fixed;
+  /* 固定定位 */
+  bottom: 20px;
+  /* 距离底部20px */
+  right: 20px;
+  /* 距离右侧20px */
+  width: 50px;
+  /* 图标宽度 */
+  height: 50px;
+  /* 图标高度 */
+}
+
+.goods-container {
+  padding: 5rpx;
+
+}
+
+.weui-grid.goods {
+  width: 360rpx;
+  background: #FFFFFF;
+  margin: 7rpx;
+  margin-bottom: 10rpx;
+  padding: 0rpx;
+}
+
+.weui-grid__icon.goods {
+  width: 360rpx;
+  height: 360rpx;
+}
+
+.weui-grid__label.goods {
+  text-align: left;
+  padding-left: 5rpx;
+}
+
+
+.scroll-view {
+  width: 100%;
+  display: flex;
+  white-space: nowrap;
+}
+
+.category-item {
+  display: inline-block;
+  width: 150rpx;
+  height: 75rpx;
+  line-height: 75rpx;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin: 0 10rpx;
+  border-radius: 10px;
+}
+
+.location-btn-container {
+  position: fixed;
+  right: 20rpx;
+  bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+.location-btn {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.location-icon {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+
+.distance-tag {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}

@@ -1,0 +1,71 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/map/index",
+    "pages/map/details",
+    "pages/map/polyline",
+    "pages/map/search",
+    "pages/animals/animals",
+    "pages/me/me",
+    "pages/subPages/share/share",
+    "pages/subPages/user/detail/detail",
+    "pages/subPages/user/edit/edit",
+    "pages/subPages/ticket/detail/detail",
+    "pages/subPages/animal/detail/detail",
+    "pages/subPages/favor/favor",
+    "pages/subPages/look/look",
+    "pages/subPages/comment/detail/comment",
+    "pages/subPages/comment/edit/comment",
+    "pages/subPages/activity/list/list",
+    "pages/subPages/activity/detail/detail",
+    "pages/subPages/pay/pay",
+    "pages/subPages/webview/webview",
+    "pages/subPages/order/list/list",
+    "pages/subPages/order/detail/detail",
+    "pages/subPages/voucher/voucher"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#E0FFFF",
+    "navigationBarTitleText": "动物园",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#4CAF50",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-actived.png"
+      },
+      {
+        "pagePath": "pages/map/index",
+        "text": "导览",
+        "iconPath": "images/map.png",
+        "selectedIconPath": "images/map-anti.png"
+      },
+      {
+        "pagePath": "pages/animals/animals",
+        "text": "动物",
+        "iconPath": "images/nav-list.png",
+        "selectedIconPath": "images/nav-listHL.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine-actived.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于辅助规划路线"
+    }
+  },
+  "useExtendedLib": {
+    "weui": true
+  }
+}

@@ -1,0 +1,32 @@
+<view class="container">
+  <view class='stars'>
+  <image src='{{user.avatar}}' class="avatar"></image>
+  <view class='content'>
+    <view>评分</view>
+    <view class="stars-container">
+      <view wx:for="{{stars}}" wx:key="index" class="star-item" data-index="{{index}}" bindtap='score'>
+        <image src="{{item.flag == 1 ? item.bgImg : item.bgfImg}}" mode="aspectFill"></image>
+      </view>
+    </view>
+  </view>
+</view>
+  <view class='reviews'>
+    <textarea placeholder='请写下动物园评价' value="{{content}}" bindinput="onContentInput" auto-height></textarea>
+  </view>
+  <!-- 媒体上传 -->
+  <view class="media-upload">
+    <view class="upload-btn" bindtap="chooseMedia">
+      <text>+ 添加图片/视频</text>
+      <text class="tip">(最多选择一个)</text>
+    </view>
+
+    <!-- 媒体预览 -->
+    <view class="preview-container" wx:if="{{img || video}}">
+      <image wx:if="{{img}}" src="{{img}}" mode="aspectFill" bindtap="previewImage" />
+      <video wx:if="{{video}}" src="{{video}}" controls autoplay="{{false}}" />
+      <text class="delete-btn" bindtap="removeMedia">×</text>
+    </view>
+  </view>
+  <button bind:tap="submit" class="btn">发表</button>
+
+</view>

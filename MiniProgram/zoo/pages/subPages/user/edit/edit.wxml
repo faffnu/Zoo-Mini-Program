@@ -1,0 +1,51 @@
+<view class="container">
+  <view class="userinfo">
+    <image src='{{ member.avatar }}' class='userinfo-avatar' bindtap="uploadAvatar">
+    </image>
+  </view>
+  <form bindsubmit="bindSave">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">昵称</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="name" class="weui-input" placeholder="昵称" value="{{member.name}}" />
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_check">
+        <view class="weui-cell__hd">
+          <view class="weui-label">性别</view>
+        </view>
+        <view class="weui-cell__bd">
+          <radio-group name="gender">
+            <radio value="男" checked="{{member.gender == '男'}}" style="margin-right: 20rpx;">男</radio>
+            <radio value="女" checked="{{member.gender == '女'}}" style="margin-right: 20rpx;">女</radio>
+            <radio value="保密" checked="{{member.gender == '保密'}}">保密 </radio>
+          </radio-group>
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="phone" class="weui-input" placeholder="请填写联系电话" value="{{member.phone}}" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">身份证</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="idCard" class="weui-input" placeholder="请填写身份证" value="{{member.idCard}}" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button type="primary" formType="submit">保存</button>
+    </view>
+
+  </form>
+</view>

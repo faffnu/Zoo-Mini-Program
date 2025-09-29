@@ -1,0 +1,150 @@
+<!--pages/subPages/ticket/detail/detail.wxml-->
+<wxs module="format">
+  function formatTime(timeStr) {
+    if (!timeStr) return ''
+    return timeStr.replace('T', ' ')
+  }
+  module.exports = {
+    formatTime: formatTime,
+  }
+</wxs>
+<view class='container'>
+  <image class="img" src='/images/ticket.jpg'></image>
+  <view class='weui-flex item'>
+    <view class="name">{{ticketinfo.name}}</view>
+    <view class='price'>￥{{ticketinfo.price}}</view>
+  </view>
+  <view class='weui-flex item'>
+    <text user-select="true">
+      <text class="statement">使用说明:</text>
+      {{ticketinfo.content}}
+    </text>
+  </view>
+  <view class="weui-flex buy">
+    <view class='bottom'>￥{{ticketinfo.price}}</view>
+    <button class='btn' bindtap="powerDrawer" data-statu="open">立即预订</button>
+  </view>
+
+  <!--mask-->
+  <view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+
+  <!--content-->
+  <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_content">
+      <view class='weui-flex item'>
+        <view class="name">{{ticketinfo.name}}</view>
+        <view class='price'>￥{{ticketinfo.price}}</view>
+      </view>
+
+      <form bindsubmit="bindSave">
+        <view class="weui-cells weui-cells_after-title">
+          <view class="section">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">数量选择</view>
+              </view>
+              <view class="weui-cell__bd">
+                <view class="stock_jiajian">
+                  <view class="stockBox" bindtap="addjian">-</view>
+                  <view class="stockBox nums">
+                    <input class="stockinnum" bindconfirm="search" value="{{num}}" bindblur="setValue"></input>
+                  </view>
+                  <view class="stockBox" bindtap="addJia">+</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <view class="section">
+            <picker mode="date" value="{{date}}" start="2023-09-01" end="2026-09-01" bindchange="bindDateChange">
+              <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                  <view class="weui-label">日期选择</view>
+                </view>
+                <view class="weui-cell__bd">{{date}}</view>
+              </view>
+            </picker>
+          </view>
+
+          <!-- 优惠券选择区域 -->
+          <view class="weui-cell weui-cell_input" bindtap="showVoucherModal">
+            <view class="weui-cell__hd">
+              <view class="weui-label">选择优惠券</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" disabled placeholder="请选择优惠券" value="{{selectedVoucher ? selectedVoucher.title : '无可用优惠券'}}" />
+            </view>
+            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">联系电话</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="phone" class="weui-input" value="{{userinfo.phone}}" disabled />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">身份证</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input name="idCard" class="weui-input" placeholder="请填写身份证" value="{{userinfo.idCard}}" disabled />
+            </view>
+          </view>
+        </view>
+
+        <!-- 价格显示区域 -->
+        <view class="price-display">
+          <view class="original-price" wx:if="{{selectedVoucher}}">
+            原价: ￥{{totalprice}}
+          </view>
+          <view class="discount-price">
+            {{selectedVoucher ? '优惠价: ' : '总金额: '}}￥{{finalPrice}}
+          </view>
+          <view class="discount-amount" wx:if="{{selectedVoucher}}">
+            已优惠: ￥{{discountAmount}}
+          </view>
+        </view>
+
+        <view class="weui-btn">
+          <button type="primary" formType="submit">购买</button>
+        </view>
+      </form>
+    </view>
+  </view>
+
+  <!-- 优惠券选择模态框 -->
+  <view class="voucher-modal" wx:if="{{showVoucherModal}}">
+    <view class="voucher-modal-mask" bindtap="hideVoucherModal"></view>
+    <view class="voucher-modal-content">
+      <view class="voucher-modal-header">
+        <text>选择优惠券</text>
+        <text class="close-btn" bindtap="hideVoucherModal">×</text>
+      </view>
+      <view class="voucher-list">
+        <view class="voucher-item" wx:for="{{availableVouchers}}" wx:key="id" bindtap="selectVoucher" data-voucher="{{item}}">
+          <view class="voucher-info">
+            <view class="voucher-title">{{item.title}}</view>
+            <view class="voucher-desc">
+              <text wx:if="{{item.type == 1}}">折扣券：{{item.value * 10}}折</text>
+              <text wx:if="{{item.type == 2}}">满减券：满{{item.minAmount}}减{{item.value}}</text>
+            </view>
+            <view class="voucher-validity">有效期: {{format.formatTime(item.beginTime)}} 至 {{format.formatTime(item.endTime)}}</view>
+          </view>
+          <view class="voucher-select">
+            <radio checked="{{selectedVoucher && selectedVoucher.id == item.id}}"></radio>
+          </view>
+        </view>
+        <view class="no-voucher" wx:if="{{availableVouchers.length === 0}}">
+          暂无可用优惠券
+        </view>
+      </view>
+      <view class="voucher-modal-footer">
+        <button bindtap="hideVoucherModal">取消</button>
+        <button type="primary" bindtap="confirmVoucher">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

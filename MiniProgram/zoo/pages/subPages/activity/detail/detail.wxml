@@ -1,0 +1,8 @@
+<!--pages/subPages/activity/detail/detail.wxml-->
+<view class="activity-container">
+  <image class="activity-image" src="{{activity.image}}" mode="aspectFit"></image>
+  <view class="activity-info">
+    <rich-text class="activity-content" nodes="{{activity.content}}"></rich-text>
+    <text class="activity-date">发布于{{activity.publishDate}}</text>
+  </view>
+</view>

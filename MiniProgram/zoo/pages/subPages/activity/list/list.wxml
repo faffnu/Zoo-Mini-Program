@@ -1,0 +1,14 @@
+<!--pages/subPages/activity/list/list.wxml-->
+<view class="container">
+  <block wx:for="{{activities}}" wx:key="id">
+    <navigator url="/pages/subPages/activity/detail/detail?id={{item.id}}" class="activity-item">
+      <image class="activity-image" src="{{item.image}}"></image>
+      <view class="activity">
+        <view class="activity-title">{{item.title}}</view>
+        <view class="activity-introduce">{{item.introduce}}</view>
+        <view class="activity-time">{{item.time}}</view>
+      </view>
+    </navigator>
+  </block>
+
+</view>

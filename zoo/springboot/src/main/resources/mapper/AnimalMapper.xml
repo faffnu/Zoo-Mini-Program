@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.AnimalMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Animal">
+        select `animal`.*, `type`.`name` as type from `animal`
+		left join `type` on `animal`.`type_id` = `type`.id
+
+        <where>
+			<if test="name != null and name != ''">
+				and `animal`.`name` like concat ('%', #{name}, '%')
+			</if>
+			<if test="type != null and type != ''">
+				and `type`.`name` like concat ('%', #{type}, '%')
+			</if>
+            <if test="typeId != null and typeId != ''">
+                and type_id = #{typeId}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Animal">
+        select * from animal where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from animal where  id = #{id}
+    </delete>
+
+    <select id="selectPopularAnimalIds" resultType="java.lang.Integer">
+        SELECT animal_id
+        FROM (
+                 SELECT animal_id FROM favor
+                 UNION ALL
+                 SELECT animal_id FROM look
+             ) AS combined
+        GROUP BY animal_id
+        ORDER BY COUNT(*) DESC
+        LIMIT #{limit}
+    </select>
+
+    <select id="selectBatchIdsWithCondition" resultType="com.example.entity.Animal">
+        select `animal`.*, `type`.`name` as type from `animal`
+        left join `type` on `animal`.`type_id` = `type`.id
+        WHERE animal.id IN
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+        <if test="animal != null">
+            <if test="animal.name != null and animal.name != ''">
+                and `animal`.`name` like concat ('%', #{animal.name}, '%')
+            </if>
+            <if test="animal.type != null and animal.type != ''">
+                and `type`.`name` like concat ('%', #{animal.type}, '%')
+            </if>
+        </if>
+    </select>
+
+
+    <select id="selectByIds" resultType="com.example.entity.Animal">
+        SELECT * FROM animal
+        <where>
+            <if test="list != null and list.size > 0">
+                id IN
+                <foreach collection="list" item="id" open="(" separator="," close=")">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+</mapper>

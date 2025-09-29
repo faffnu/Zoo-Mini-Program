@@ -1,0 +1,82 @@
+<!-- pages/subPages/order/list/list.wxml -->
+<view class="container">
+  <!-- 状态选项卡 -->
+  <scroll-view scroll-x class="nav-scroll" scroll-with-animation scroll-into-view="{{'nav-' + currentStatus}}">
+    <view class="nav-list">
+      <view id="nav-all" class="nav-item {{currentStatus === '' ? 'active' : ''}}" bindtap="switchStatus" data-status="">
+        全部
+      </view>
+      <view id="nav-待支付" class="nav-item {{currentStatus === '待支付' ? 'active' : ''}}" bindtap="switchStatus" data-status="待支付">
+        待支付
+      </view>
+      <view id="nav-待使用" class="nav-item {{currentStatus === '待使用' ? 'active' : ''}}" bindtap="switchStatus" data-status="待使用">
+        待使用
+      </view>
+      <view id="nav-待评价" class="nav-item {{currentStatus === '待评价' ? 'active' : ''}}" bindtap="switchStatus" data-status="待评价">
+        待评价
+      </view>
+      <view id="nav-已完成" class="nav-item {{currentStatus === '已完成' ? 'active' : ''}}" bindtap="switchStatus" data-status="已完成">
+        已完成
+      </view>
+      <view id="nav-已取消" class="nav-item {{currentStatus === '已取消' ? 'active' : ''}}" bindtap="switchStatus" data-status="已取消">
+        已取消
+      </view>
+      <view id="nav-已退款" class="nav-item {{currentStatus === '已退款' ? 'active' : ''}}" bindtap="switchStatus" data-status="已退款">
+        已退款
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <block wx:for="{{filteredOrders}}" wx:key="id">
+      <view class="order-card">
+        <!-- 订单头部 -->
+        <view class="order-header">
+          <text class="order-no">订单号：{{item.orderNumber}}</text>
+          <view class="status-container">
+            <text class="order-status">{{item.state}}</text>
+            <!-- 添加倒计时显示 -->
+            <text wx:if="{{item.state === '待支付' && countdowns[item.id]}}" class="countdown">
+              {{countdowns[item.id]}}
+            </text>
+          </view>
+        </view>
+
+        <!-- 订单主体 -->
+        <view class="order-body" bindtap="viewDetail" data-id="{{item.id}}">
+          <view class="product-info">
+            <text class="ticket-name">{{item.ticket}}</text>
+            <text class="quantity">x{{item.number}}</text>
+          </view>
+          <view class="time-info">
+            <text class="create-time">下单时间：{{item.createTime}}</text>
+            <text class="use-date">使用日期：{{item.useDate}}</text>
+          </view>
+        </view>
+
+        <!-- 订单底部 -->
+        <view class="order-footer">
+          <text class="total-price">合计：￥{{item.totalPrice}}</text>
+          <view class="action-buttons">
+            <view wx:if="{{item.state === '待支付'}}" class="btn default" bindtap="cancelPay" data-id="{{item.id}}">
+              取消
+            </view>
+            <view wx:if="{{item.state === '待支付'}}" class="btn primary" bindtap="pay" data-id="{{item.id}}">
+              立即支付
+            </view>
+            <view wx:if="{{item.state === '待使用'}}" class="btn default" bindtap="refund" data-id="{{item.id}}">申请退款</view>
+            <view wx:if="{{item.state === '待使用'}}" class="btn primary" bindtap="useTicket" data-id="{{item.id}}">去使用</view>
+            <view wx:if="{{item.state === '待评价'}}" class="btn default" bindtap="comment" data-id="{{item.id}}">去评价</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 空状态 -->
+    <view wx:if="{{filteredOrders.length===0}}" class="empty-wrapper">
+      <image src="/images/empty.png" class="empty-img"></image>
+      <text class="empty-text">暂无相关订单</text>
+    </view>
+  </view>
+</view>

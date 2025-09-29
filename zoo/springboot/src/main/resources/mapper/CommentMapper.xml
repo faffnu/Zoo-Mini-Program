@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CommentMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Comment">
+        select `comment`.*, `user`.name as user, `user`.`avatar` from `comment`
+		left join `user` on `comment`.`user_id` = `user`.id
+
+        <where>
+			<if test="score != null and score != ''">
+				and `comment`.`score` = #{score}
+			</if>
+
+        </where>
+    </select>
+
+    <select id="getCommentsOrderByApprove" resultType="com.example.entity.Comment">
+        SELECT
+            `comment`.*,
+            `user`.name AS user,
+            `user`.`avatar` AS avatar
+        FROM
+            `comment`
+                LEFT JOIN
+            `user`
+            ON
+                `comment`.`user_id` = `user`.id
+        ORDER BY
+            `approve` DESC;
+    </select>
+
+    <select id="getCommentsOrderByDate" resultType="com.example.entity.Comment">
+        SELECT
+            `comment`.*,
+            `user`.name AS user,
+            `user`.`avatar` AS avatar
+        FROM
+            `comment`
+                LEFT JOIN
+            `user`
+            ON
+                `comment`.`user_id` = `user`.id
+        ORDER BY
+            `time` DESC;
+
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Comment">
+        select * from comment where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from comment where  id = #{id}
+    </delete>
+
+</mapper>

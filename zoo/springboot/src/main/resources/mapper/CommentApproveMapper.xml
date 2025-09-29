@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.CommentApproveMapper">
+
+    <select id="selectAll" resultType="com.example.entity.CommentApprove">
+        select `comment_approve`.*, `user`.name as user, `comment`.`content` as comment from `comment_approve`
+		left join `user` on `comment_approve`.`user_id` = `user`.id
+		left join `comment` on `comment_approve`.`comment_id` = `comment`.id
+
+        <where>
+			<if test="user != null and user != ''">
+				and `user`.name like concat ('%', #{user}, '%')
+			</if>
+			<if test="comment != null and comment != ''">
+				and `comment`.`content` like concat ('%', #{comment}, '%')
+			</if>
+            <if test="userId != null and userId != ''">
+                and `comment_approve`.`user_id` = #{userId}
+            </if>
+            <if test="commentId != null and commentId != ''">
+                and `comment_approve`.`comment_id` = #{commentId}
+            </if>
+
+        </where>
+    </select>
+
+    <select id="selectCommentId" resultType="com.example.entity.CommentApprove">
+        select * from comment_approve where comment_id = #{commentId}
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.CommentApprove">
+        select * from comment_approve where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from comment_approve where  id = #{id}
+    </delete>
+
+    <delete id="deleteApprove">
+        delete from comment_approve where  user_id = #{userId} and comment_id = #{commentId}
+    </delete>
+
+
+</mapper>

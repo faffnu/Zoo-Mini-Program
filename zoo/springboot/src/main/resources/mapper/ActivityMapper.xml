@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ActivityMapper">
+
+    <select id="selectAll" resultType="com.example.entity.Activity">
+        select `activity`.* from `activity`
+
+        <where>
+			<if test="title != null and title != ''">
+				and `activity`.`title` like concat ('%', #{title}, '%')
+			</if>
+
+        </where>
+        order by `activity`.`publish_date` desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Activity">
+        select * from activity where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from activity where  id = #{id}
+    </delete>
+
+</mapper>

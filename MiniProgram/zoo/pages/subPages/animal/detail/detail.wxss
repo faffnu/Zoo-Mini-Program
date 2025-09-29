@@ -1,0 +1,28 @@
+/* pages/subPages/animal/detail/detail.wxss */
+.img {
+  width: 100%;
+  border-bottom: 10rpx solid #eee;
+}
+
+.name {
+  font-size: 36rpx;
+  flex: 1
+}
+
+.star {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.item {
+  border-bottom: 10rpx solid #eee;
+  padding: 24rpx;
+  font-size: 32rpx;
+  background: #fff;
+}
+
+.content {
+  margin: 0rpx;
+  font-size: 32rpx;
+  text-align: start;
+}

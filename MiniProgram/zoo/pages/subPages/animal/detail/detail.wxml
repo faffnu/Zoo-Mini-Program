@@ -1,0 +1,15 @@
+<!--pages/subPages/animal/detail/detail.wxml-->
+<view class='container'>
+  <image class="img" src='{{animalinfo.picUrl}}'>
+  </image>
+  <view class='weui-flex item'>
+    <view class="name">{{animalinfo.name}}</view>
+    <image class="star" src='/images/star.png' wx:if="{{isStar}}" bind:tap="toggleStar"></image>
+    <image class="star" src='/images/none-star.png' wx:else="{{isStar}}" bind:tap="toggleStar"></image>
+  </view>
+  <view class='weui-flex item'>
+    <text user-select="true" class="content">
+      {{animalinfo.content}}
+    </text>
+  </view>
+</view>

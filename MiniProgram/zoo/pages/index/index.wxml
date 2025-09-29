@@ -1,0 +1,99 @@
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" autoplay="true" interval="3000" class="banner">
+    <swiper-item>
+      <image class="banner" src="/images/door.png" mode="aspectFill" />
+    </swiper-item>
+    <swiper-item>
+      <image class="banner" src="/images/banner1.jpg" mode="aspectFill" />
+    </swiper-item>
+    <swiper-item>
+      <image class="banner" src="/images/banner2.jpg" mode="aspectFill" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 公告 -->
+  <view class="notice">
+    <text class="icon">📢</text>
+    <swiper vertical autoplay interval="2000" class="notice-swiper">
+      <swiper-item wx:for="{{notices}}" wx:key="index">
+        <text class="swiper-text">{{item}}</text>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 门票 -->
+  <view class="section">
+    <view class="section-title">门票预订</view>
+    <view class="tickets">
+      <view class="ticket" wx:for="{{tickets}}" wx:key="index">
+        <text class="name">{{item.name}}</text>
+        <text class="price">¥{{item.price}}</text>
+        <button size="mini" data-ticketid="{{item.id}}" bind:tap="ticket">预订</button>
+      </view>
+    </view>
+  </view>
+  <view class='title-item'>
+    <view class='title'>精选动物</view>
+    <view class='view-all-btn' bindtap='viewAnimals'>查看全部</view>
+  </view>
+
+  <view class="animals-container">
+    <scroll-view scroll-x="true" class="scroll-view">
+      <block wx:for="{{animals}}" wx:key="index">
+        <navigator url="/pages/subPages/animal/detail/detail?id={{item.id}}" class="animal-item">
+          <image class="pic" src="{{item.picUrl}}" mode="aspectFill" />
+          <view class="animal-name">{{item.name}}</view>
+        </navigator>
+      </block>
+    </scroll-view>
+  </view>
+
+  <view class='title-item'>
+    <view class='title'>最新活动</view>
+    <view class='view-all-btn' bindtap='viewActivities'>查看全部</view>
+  </view>
+  <block wx:for="{{activities}}" wx:key="id">
+    <navigator url="/pages/subPages/activity/detail/detail?id={{item.id}}" class="activity-item">
+      <image class="activity-image" src="{{item.image}}"></image>
+      <view class="activity">
+        <view class="activity-title">{{item.title}}</view>
+        <view class="activity-introduce">{{item.introduce}}</view>
+        <view class="activity-time">{{item.time}}</view>
+      </view>
+    </navigator>
+  </block>
+  <view class='title-item'>
+    <view class='title'>游客评价</view>
+    <view class='view-all-btn' bindtap='viewAllComments'>查看全部</view>
+  </view>
+  <block wx:for="{{comments}}" wx:key="id">
+    <view class="comment-item">
+      <view class="comment-info">
+        <image class="avatar" src="{{item.avatar}}"></image>
+        <view class="info">
+          <view class="nick">
+            <text class="nickname">{{item.user}}</text>
+            <block wx:for="{{[1, 2, 3, 4, 5]}}" wx:key="index" wx:for-item="star">
+              <image class="star" src="{{item.score >= index+1? '/images/star.png' : '/images/none-star.png'}}"></image>
+            </block>
+          </view>
+          <text class="time">{{item.time}}</text>
+        </view>
+      </view>
+      <text class="content">{{item.content}}</text>
+      <block wx:if="{{item.img}}">
+        <image class="comment-img" src="{{item.img}}" mode="widthFix"></image>
+      </block>
+      <block wx:if="{{item.video}}">
+        <video class="comment-video" src="{{item.video}}" controls></video>
+      </block>
+      <view class="approve-count">
+        <image class="approve" src='/images/approve.png' wx:if="{{item.isApprove}}" bind:tap="toggleApprove" data-id="{{item.id}}"></image>
+        <image class="approve" src='/images/none-approve.png' wx:else="{{item.isApprove}}" bind:tap="toggleApprove" data-id="{{item.id}}"></image>
+        <text>{{item.approve}}</text>
+      </view>
+    </view>
+  </block>
+
+</view>
