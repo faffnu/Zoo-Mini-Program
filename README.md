@@ -8,7 +8,7 @@ https://github.com/user-attachments/assets/e79a6d39-0a41-4952-af2b-9472408eb395
 
 ### Web管理后台
 
-https://github.com/faffnu/Zoo-Mini-Program/issues/1#issue-3463105762
+https://github.com/user-attachments/assets/bfdb10a4-0e8d-4ea1-a9cb-5dc3d464abfc
 
 
 ## 系统整体架构
