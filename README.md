@@ -4,12 +4,11 @@
 
 ### 微信小程序端
 
-
+https://github.com/user-attachments/assets/e79a6d39-0a41-4952-af2b-9472408eb395
 
 ### Web管理后台
 
-
-
+https://github.com/faffnu/Zoo-Mini-Program/issues/1#issue-3463105762
 
 
 ## 系统整体架构
