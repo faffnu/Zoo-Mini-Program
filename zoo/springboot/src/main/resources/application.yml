@@ -51,5 +51,5 @@ mybatis:
 #fileBaseUrl: http://192.168.217.100:${server.port}
 
 wechat:
-  appid: wx0c4a445f22e6ca57
-  secret: 7308951f5bc523c03a302306af075fc3
+  appid: wx0c4a445f22e6ca
+  secret: 5bc523c03a302306af075fc3
